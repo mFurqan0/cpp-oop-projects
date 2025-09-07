@@ -2,30 +2,26 @@
 using namespace std;
 
 class Serial {
-private:
-    static int count;   // shared among all objects
-    int serialNumber;   // unique for each object
+    private:
+        int serialNumber;
+        static int count;
+    public:
+        Serial() {
+            count ++;
+            serialNumber = count;
+        }
 
-public:
-    Serial() {
-        count++;
-        serialNumber = count;
-    }
-
-    void showSerial() {
-        cout << "I am object number " << serialNumber << endl;
-    }
+        void getSerialNumber(){
+            cout << "This object's serial number is: " << serialNumber << endl;
+        }
 };
 
-// define static variable
 int Serial::count = 0;
 
 int main() {
-    Serial s1, s2, s3;
-
-    s1.showSerial();
-    s2.showSerial();
-    s3.showSerial();
-
+    Serial obj1, obj2, obj3;
+    obj1.getSerialNumber();
+    obj2.getSerialNumber();
+    obj3.getSerialNumber();
     return 0;
 }
