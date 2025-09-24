@@ -1,8 +1,41 @@
 #include <iostream>
 using namespace std;
 
-// Reuse Fraction class from above
-// (copy Fraction definition here)
+class Fraction {
+private:
+    int num, den;
+
+public:
+    // Constructor to initialize num and den
+    Fraction(int n = 0, int d = 1) {
+        num = n;
+        den = d;
+    }
+
+    void getFraction() {
+        char slash;
+        cout << "Enter fraction (a/b): ";
+        cin >> num >> slash >> den;
+    }
+
+    void showFraction() {
+        cout << num << "/" << den;
+    }
+
+    Fraction add(Fraction f) {
+        Fraction temp;
+        temp.num = num * f.den + f.num * den;
+        temp.den = den * f.den;
+        return temp;
+    }
+
+    Fraction mul(Fraction f) {
+        Fraction temp;
+        temp.num = num * f.num;
+        temp.den = den * f.den;
+        return temp;
+    }
+};
 
 int main() {
     int denom;
