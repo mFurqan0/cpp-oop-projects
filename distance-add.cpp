@@ -24,10 +24,10 @@ class Distance {
             cout << feet <<  " feet" << " and " << inches << " inches" <<endl;
         }
         
-        Distance add_dist(const Distance) const ;
+        Distance add_dist(const Distance&) const ;
 };
 
-Distance Distance :: add_dist(const Distance d2) const {
+Distance Distance :: add_dist(const Distance& d2) const {
     Distance temp;
     
     temp.inches = inches + d2.inches;
