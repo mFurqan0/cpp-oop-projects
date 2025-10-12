@@ -3,35 +3,42 @@ using namespace std;
 
 class Car {
 private:
-    string brand;
-    string model;
-
+    int speed;
+    double fuel;
 public:
-    Car(string b, string m) {
-        brand = b;
-        model = m;
+    Car() {
+        speed = 0;
+        fuel = 50;
     }
-
-    
-    Car(const Car &c) {
-        brand = c.brand;
-        model = c.model;
+    void accelerate() {
+        if (fuel > 0) {
+            speed += 10;
+            fuel -= 2;
+        } else {
+            cout << "Out of fuel!" << endl;
+        }
     }
-
-    void display() {
-        cout << "Car: " << brand << " " << model << endl;
+    void brake() {
+        speed -= 10;
+        if (speed < 0)
+            speed = 0;
+    }
+    void refuel(double amount) {
+        if (amount > 0)
+            fuel += amount;
+    }
+    void showStatus() {
+        cout << "Speed: " << speed << " km/h, Fuel: " << fuel << " L" << endl;
     }
 };
 
 int main() {
-    Car car1("Toyota", "Corolla");
-    Car car2 = car1;   
-
-    cout << "Original Car: ";
-    car1.display();
-
-    cout << "Copied Car: ";
-    car2.display();
-
+    Car c;
+    c.accelerate();
+    c.showStatus();
+    c.brake();
+    c.showStatus();
+    c.refuel(20);
+    c.showStatus();
     return 0;
 }
